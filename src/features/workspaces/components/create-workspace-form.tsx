@@ -43,7 +43,11 @@ export const CreateWorkspaceForm = ({ onCancel }: CerateWorkspaceFormProps) => {
             ...values,
             image: values.image instanceof File ? values.image : "",
         };
-        mutate({ form: finalValues });
+        mutate({ form: finalValues }, {
+            onSuccess: () => {
+                form.reset();
+            }
+        });
     }
 
 
